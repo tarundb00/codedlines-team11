@@ -1,24 +1,4 @@
-import React, { useContext } from 'react';
-import './Cart.css';
-import { StoreContext } from '../../context/StoreContext';
-import { Link ,useNavigate} from 'react-router-dom';
-import { calculateCartTotals } from '../../util/cartUtils';
 
-
-const Cart = () => {
-    const navigate= useNavigate();
-    const {foodList,increaseQty,decreaseQty,quantities,removeFromCart}=useContext(StoreContext);
-    //cart iems
-
-    const cartItems=foodList.filter(food=>quantities[food.id]>0);
-    
-    const{subtotal,shipping,tax,total} =calculateCartTotals(cartItems,quantities);
-    
-  return (
-<div className="container py-5">
-    <h1 className="mb-5">Your Shopping Cart</h1>
-    <div className="row">
-        <div className="col-lg-8">
         
 
           {
@@ -26,13 +6,7 @@ const Cart = () => {
                 <p>Your cart is empty</p>
             ):(
                 <div className="card mb-4">
-                <div className="card-body">
                 
-                {cartItems.map((food)=>(
-                        <div key={food.id} className="row cart-item mb-3">
-                        <div className="col-md-3">
-                            <img 
-                            src={food.imageUrl} 
                             alt={food.name}
                              className="img-fluid rounded"
                              width={100}/>
